@@ -82,3 +82,31 @@
 
 ✨TIP
 주석을 명확히 달거나 줄바꿈을 적절히 활용합시다!
+
+
+# [Mocking: 외부 의존성을 격리하자.]
+## Mockito란?
+- 자바에서 가짜 객체(Mock Object)를 생성하고, 그 객체의 동작을 정의(Stubbing)하며, 실제 호출되었는지 검증(Verification) 할 수 있게 하는 프레임워크입니다.
+- 만약 MemberService를 테스트하려는데, DB나 외부 결제 API를 Autowired 하고 있다면, 이는 단위 테스트가 아닌 통합 테스트가 됩니다.
+- 그렇기에 Mockito는 이 의존성을 가짜(Mock)로 대체해줍니다.
+
+## 관련 어노테이션
+- @Mock: 테스트 클래스에서 Mock 객체를 생성하는 데 사용됩니다. 이 어노테이션이 붙은 필드는 Mockito에 의해 자동으로 Mock 객체로 초기화됩니다.
+- @InjectMocks: 테스트 클래스에서 실제 객체를 생성하고, @Mock으로 생성된 Mock 객체를 주입하는 데 사용됩니다. 이 어노테이션이 붙은 필드는 Mockito에 의해 자동으로 초기화되고, 필요한 Mock 객체가 주입됩니다.
+- @Spy: 실제 객체를 감싸는 Spy 객체를 생성하는 데 사용됩니다. Spy 객체는 실제 메서드를 호출하지만, 필요에 따라 특정 메서드의 동작을 정의할 수 있습니다.
+
+## Stubbing & Verification
+1. Stubbing
+- 메서드가 호출되면 이 값을 돌려 달라고 미리 정해두는 과정입니다.
+```java
+// memberRepository의 findById 메서드가 1L을 인자로 받으면, Optional.of(member)를 반환하도록 설정한다.
+when(memberRepository.findById(1L)).thenReturn(Optional.of(member));
+```
+
+2. Verification
+- 실제로 이 메서드가 몇 번 호출되었는지를 확인합니다.
+- 결과 뿐 아니라 객체 간 상호작용을 확인합니다.
+```java
+// memberRepository의 save 메서드가 정확하게 1번만 호출되었는지 확인
+verify(memberRepository, times(1)).save(any(Member.class));mberRepos)
+```
