@@ -58,6 +58,7 @@
 - Assertions.assertThrows(expectedType, executable) : 특정 예외가 발생하는지 검증합니다.
 
 ## Given - When - Then
+✅[Assertions 테스트 코드 보기](https://github.com/hyesuhan/UnitTest/blob/main/src/test/java/test/unit/AssertionsTest.java)
 이 패턴은 단위 테스트의 표준 구조 중 하나입니다.
 1. Given
 - 테스트 수행 전 환경 설정과 데이터를 준비합니다.
