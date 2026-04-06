@@ -30,14 +30,20 @@
 
 ## JUnit 5
 ### Before - After
+✅[Before-After 테스트 코드 보기](https://github.com/hyesuhan/UnitTest/blob/main/src/test/java/test/unit/BeforeAfterTest.java)
 - @BeforeEach: 각 테스트 메서드 실행 전에 실행되는 메서드에 사용됩니다. 주로 테스트 환경을 초기화하는 데 사용됩니다.
 - @AfterEach: 각 테스트 메서드 실행 후에 실행되는 메서드에 사용됩니다. 주로 테스트 환경을 정리하는 데 사용됩니다.
 - @BeforeAll: 모든 테스트 메서드 실행 전에 한 번만 실행되는 메서드에 사용됩니다. 주로 테스트 클래스 전체에서 공유되는 리소스를 초기화하는 데 사용됩니다.
 - @AfterAll: 모든 테스트 메서드 실행 후에 한 번만 실행되는 메서드에 사용됩니다. 주로 테스트 클래스 전체에서 공유되는 리소스를 정리하는 데 사용됩니다.
 
 ### Test 구조화 어노테이션
+✅[Test 구조화 테스트 코드 보기](https://github.com/hyesuhan/UnitTest/blob/main/src/test/java/test/unit/StructureTest.java)
 - @DisplayName: 테스트 클래스나 테스트 메서드에 사용자 정의 이름을 지정할 수 있습니다. 테스트 결과 보고서에서 이 이름이 표시됩니다.
 - @Nested: 테스트 클래스 내에 중첩된 테스트 클래스를 정의할 수 있습니다. 이를 통해 관련된 테스트를 그룹화할 수 있습니다.
   - 또한, 부모 클래스의 멤버 변수에 접근할 수 있어 @BeforeEach같은 공통 설정을 공유하기 쉽습니다.
 - @Tag: 테스트 메서드나 테스트 클래스에 태그를 지정할 수 있습니다. 이를 통해 특정 태그가 있는 테스트만 실행하거나 제외할 수 있습니다.
 - @Order: 테스트 메서드의 실행 순서를 지정할 수 있습니다. 그러나 단위 테스트는 독립적이어야 하므로, 이 어노테이션은 권장되지 않습니다.
+
+### Test Iteration
+- @RepeatedTest: 동일한 테스트 메서드를 여러 번 반복해서 실행할 수 있습니다. 반복 횟수를 지정할 수 있으며, 각 반복에 대한 정보를 제공하는 RepetitionInfo 객체를 매개변수로 받을 수 있습니다.
+- @ParameterizedTest: 다양한 입력 값으로 동일한 테스트 메서드를 실행할 수 있습니다. @ValueSource, @CsvSource, @MethodSource 등과 함께 사용하여 다양한 형태의 데이터를 제공할 수 있습니다.
