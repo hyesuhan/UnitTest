@@ -45,5 +45,39 @@
 - @Order: 테스트 메서드의 실행 순서를 지정할 수 있습니다. 그러나 단위 테스트는 독립적이어야 하므로, 이 어노테이션은 권장되지 않습니다.
 
 ### Test Iteration
+✅[Iteration 테스트 코드 보기](https://github.com/hyesuhan/UnitTest/blob/main/src/test/java/test/unit/IterationTest.java)
 - @RepeatedTest: 동일한 테스트 메서드를 여러 번 반복해서 실행할 수 있습니다. 반복 횟수를 지정할 수 있으며, 각 반복에 대한 정보를 제공하는 RepetitionInfo 객체를 매개변수로 받을 수 있습니다.
 - @ParameterizedTest: 다양한 입력 값으로 동일한 테스트 메서드를 실행할 수 있습니다. @ValueSource, @CsvSource, @MethodSource 등과 함께 사용하여 다양한 형태의 데이터를 제공할 수 있습니다.
+
+### Test Assertion
+- Assertions.assertEquals(expected,actual) : 예상 값과 실제 값이 같은지 검증합니다.
+- Assertions.assertNotEquals(unexpected,actual) : 예상 값과 실제 값이 다른지 검증합니다.
+- Assertions.assertTrue(condition) : 조건이 참인지 검증합니다.
+- Assertions.assertFalse(condition) : 조건이 거짓인지 검증합니다.
+- Assertions.assertNull(object) : 객체가 null인지 검증합니다.
+- Assertions.assertThrows(expectedType, executable) : 특정 예외가 발생하는지 검증합니다.
+
+## Given - When - Then
+이 패턴은 단위 테스트의 표준 구조 중 하나입니다.
+1. Given
+- 테스트 수행 전 환경 설정과 데이터를 준비합니다.
+- 이 때 테스트 객체 생성, Mock(가짜 데이터), 입력값 준비 등이 포함됩니다.
+- 예: "회원 가입 테스트를 위해 이름이 "홍길동"인 회원 정보를 준비한다."
+
+2. When
+- 실제로 테스트를 하고자 하는 목적을 수행하는 단계입니다.
+- 특정 메서드 호출, API 요청 등이 포함됩니다.
+- 예: "회원 가입 메서드를 호출한다."
+
+3. Then
+- 테스트 결과를 검증하는 단계입니다.
+- Assertions를 사용하여 예상 결과와 실제 결과를 비교합니다.
+- 예: "회원 가입이 성공적으로 이루어지고, 회원 이름이 홍길동인지 확인한다."
+
+쓰는 이유는 간단합니다.
+- 처음 보는 사람들도 어떤 상황에서 이 행동을 하면, 이렇게 되는 구나를 이해 가능합니다.
+- 테스트 실패 시 어느 단계에서 문제가 생겼는지 확인 가능합니다.
+- 테스트 코드 자체만으로 Spec을 이해할 수 있어 문서화 역할을 합니다.
+
+✨TIP
+주석을 명확히 달거나 줄바꿈을 적절히 활용합시다!
