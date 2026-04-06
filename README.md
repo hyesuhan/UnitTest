@@ -91,6 +91,7 @@
 - 그렇기에 Mockito는 이 의존성을 가짜(Mock)로 대체해줍니다.
 
 ## 관련 어노테이션
+✅[Mockito 테스트 코드 보기](https://github.com/hyesuhan/UnitTest/blob/main/src/test/java/test/unit/MemberServiceTest.java)
 - @Mock: 테스트 클래스에서 Mock 객체를 생성하는 데 사용됩니다. 이 어노테이션이 붙은 필드는 Mockito에 의해 자동으로 Mock 객체로 초기화됩니다.
 - @InjectMocks: 테스트 클래스에서 실제 객체를 생성하고, @Mock으로 생성된 Mock 객체를 주입하는 데 사용됩니다. 이 어노테이션이 붙은 필드는 Mockito에 의해 자동으로 초기화되고, 필요한 Mock 객체가 주입됩니다.
 - @Spy: 실제 객체를 감싸는 Spy 객체를 생성하는 데 사용됩니다. Spy 객체는 실제 메서드를 호출하지만, 필요에 따라 특정 메서드의 동작을 정의할 수 있습니다.
