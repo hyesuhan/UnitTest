@@ -115,6 +115,7 @@ verify(memberRepository, times(1)).save(any(Member.class));mberRepos)
 
 # [Integration Test: 모듈 간 상호작용을 검증하자.]
 ## 통합 테스트란?
+✅[통합 테스트 관련 코드 보기](https://github.com/hyesuhan/UnitTest/blob/main/src/test/java/test/unit/MemberServiceIntegrationTest.java)
 - 단위 테스트가 개별 모듈의 기능을 검증하는 데 초점을 맞춘다면, 통합 테스트는 여러 모듈이 함께 작동할 때의 상호작용과 통합된 기능을 검증하는 테스트입니다.
 - 단위 테스트 시 Spring은 동작하지 않지만, @SpringBootTest 어노테이션을 통해 spring이 동작되게 할 수 있습니다.
 - 테스트 수행 시 다음의 스프링이 동작합니다.
