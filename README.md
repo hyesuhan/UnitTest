@@ -111,3 +111,24 @@ when(memberRepository.findById(1L)).thenReturn(Optional.of(member));
 // memberRepository의 save 메서드가 정확하게 1번만 호출되었는지 확인
 verify(memberRepository, times(1)).save(any(Member.class));mberRepos)
 ```
+
+
+# [Integration Test: 모듈 간 상호작용을 검증하자.]
+## 통합 테스트란?
+- 단위 테스트가 개별 모듈의 기능을 검증하는 데 초점을 맞춘다면, 통합 테스트는 여러 모듈이 함께 작동할 때의 상호작용과 통합된 기능을 검증하는 테스트입니다.
+- 단위 테스트 시 Spring은 동작하지 않지만, @SpringBootTest 어노테이션을 통해 spring이 동작되게 할 수 있습니다.
+- 테스트 수행 시 다음의 스프링이 동작합니다.
+  - Spring IoC/DI 기능을 사용 가능합니다.
+  - Repository를 사용해서 DB CRUD 가 가능합니다.
+
+
+## @Transactional이 필요한 이유
+- 통합 테스트 시 DB를 사용하게 되는데, 이 때 테스트 데이터가 DB에 남아있을 수 있습니다.
+- 테스트 클래스에 @Transactional 어노테이션을 붙이면, 각 테스트 메서드가 실행된 후에 트랜잭션이 롤백되어 DB 상태가 초기화됩니다.
+- 즉, 테스트가 끝나자마자 DB를 RollBac 하게 됩니다.
+
+## Testcontainers
+- 우리는 현재 DB를 실제로 띄우는 것에 집중하는 것이 아닌, 오직 테스트를 위한 DB를 올릴 것 입니다.
+- 따라서 이에 아주 잘 맞는 환경인 Docker을 활용해 일시적으로 올리고 DB를 내려 버리면 됩니다.
+- 그러나 당연히 단점으로는 Container을 올리는 데 시간이 걸립니다.
+

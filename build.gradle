@@ -20,12 +20,20 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
     // lombok
     compileOnly 'org.projectlombok:lombok:1.18.28'
     annotationProcessor('org.projectlombok:lombok:1.18.28')
+
+    // mysql - docker로 테스트를 위하 임시 컨테이너를 띄우겠습니다.
+    testImplementation "org.springframework.boot:spring-boot-testcontainers"
+    testImplementation "org.testcontainers:mysql:1.19.0"
+    testImplementation "org.testcontainers:junit-jupiter:1.19.0"
+
+    testRuntimeOnly 'com.mysql:mysql-connector-j:8.3.0'
 }
 
 tasks.named('test') {
